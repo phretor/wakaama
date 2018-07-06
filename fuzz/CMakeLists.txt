@@ -6,7 +6,11 @@ if(DTLS)
     message(FATAL_ERROR "DTLS option is not supported." )
 endif()
 
+SET(CMAKE_C_COMPILER afl-clang)
+SET(CMAKE_CXX_COMPILER afl-clang++)
+
 include(${CMAKE_CURRENT_LIST_DIR}/../core/wakaama.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../examples/shared/shared.cmake)
 
 add_definitions(-DLWM2M_SERVER_MODE)
 add_definitions(${SHARED_DEFINITIONS} ${WAKAAMA_DEFINITIONS})
